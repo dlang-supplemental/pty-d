@@ -1,0 +1,11 @@
+= 2026-08-28 - Initial pty-d bindings
+
+Functional first release of `dlang-supplemental/pty-d`.
+
+* **Windows:** thin ConPTY host — dynamic FFI + pipe-backed `ConPty` (`Pty`
+  alias). Does not spawn children; exposes `HPCON` for
+  `PROC_THREAD_ATTRIBUTE_PSEUDOCONSOLE`.
+* **POSIX:** `PosixPty` (`Pty` alias) over `posix_openpt` / `grantpt` /
+  `unlockpt` / `ptsname`.
+* Unittests: open/resize/close on the host OS.
+* Out of scope: VT parser, terminal emulator UI, process launcher helpers.

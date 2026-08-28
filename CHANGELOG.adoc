@@ -1,0 +1,9 @@
+= changelog
+
+== 2026-08-28 - Initial portable PTY bindings
+
+* Windows ConPTY FFI (`CreatePseudoConsole` / `ResizePseudoConsole` /
+  `ClosePseudoConsole`) via runtime `kernel32` lookup + `ConPty` RAII wrapper.
+* POSIX `posix_openpt` path (`PosixPty`) with `TIOCSWINSZ` resize.
+* Package `pty-d` **0.1.0**.
+* See link:changelog-details/2026-08-28 - initial pty-d bindings.adoc[details].

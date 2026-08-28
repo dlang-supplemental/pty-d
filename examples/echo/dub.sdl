@@ -1,0 +1,7 @@
+name "echo"
+description "pty-d example: open a PTY, resize, print handles"
+dependency "pty-d" path="../.."
+targetType "executable"
+targetName "pty-echo"
+sourcePaths "source"
+importPaths "source"

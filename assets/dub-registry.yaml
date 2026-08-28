@@ -1,0 +1,7 @@
+name: pty-d
+description: Thin portable PTY bindings for D (Windows ConPTY + POSIX posix_openpt)
+categories:
+  - library.binding
+  - library.development
+repository: https://github.com/dlang-supplemental/pty-d
+license: MIT
