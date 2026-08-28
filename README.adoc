@@ -51,6 +51,7 @@ endif::[]
   `TIOCSWINSZ` resize via `PosixPty` / `Pty`.
 
 It does **not** reimplement ConPTY, parse VT sequences, or draw a terminal UI.
+Pair with link:https://github.com/dlang-supplemental/vt-d[t-d] (DUB t-d) for VT/ANSI → character-cell screen model.
 For in-terminal TUI widgets see link:https://github.com/dlang-supplemental/opentui-d[`opentui-d`].
 
 == Install
