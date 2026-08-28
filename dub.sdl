@@ -1,7 +1,7 @@
 name "pty-d"
 description "Thin portable PTY bindings for D: Windows ConPTY + POSIX posix_openpt"
 authors "amdphreak"
-copyright "Copyright © 2026, dlang-supplemental contributors"
+copyright "Copyright (c) 2026, dlang-supplemental contributors"
 license "MIT"
 version "0.1.0"
 # Keep in sync with VERSION / git tag vX.Y.Z.

@@ -16,14 +16,14 @@ ifdef::env-github[]
 <br />
 <h3 align="center">pty-d</h3>
 <p align="center">
-Thin portable PTY bindings for D — Windows ConPTY + POSIX <code>posix_openpt</code>.<br />
+Thin portable PTY bindings for D -- Windows ConPTY + POSIX <code>posix_openpt</code>.<br />
 FFI and a small safe host API only. No VT parser / emulator.
 <br />
 <a href="https://github.com/dlang-supplemental/pty-d/issues">Report Bug</a>
 &middot;
 <a href="https://github.com/dlang-supplemental/pty-d/issues">Request Feature</a>
 &middot;
-<a href="https://dlang-supplemental.github.io/docs/">Explore the docs »</a>
+<a href="https://dlang-supplemental.github.io/docs/">Explore the docs >></a>
 </p>
 </div>
 ++++
@@ -32,11 +32,11 @@ endif::[]
 ifndef::env-github[]
 = pty-d
 
-Thin portable PTY bindings for D — Windows ConPTY + POSIX `posix_openpt`.
+Thin portable PTY bindings for D -- Windows ConPTY + POSIX `posix_openpt`.
 
 FFI and a small safe host API only. No VT parser / emulator.
 
-link:https://dlang-supplemental.github.io/docs/[Explore the docs »]
+link:https://dlang-supplemental.github.io/docs/[Explore the docs >>]
 endif::[]
 
 == About
@@ -111,7 +111,7 @@ See link:CHANGELOG.adoc[CHANGELOG.adoc].
 
 == License
 
-MIT — see link:LICENSE[LICENSE].
+MIT -- see link:LICENSE[LICENSE].
 
 == Contact
 
