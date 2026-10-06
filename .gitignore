@@ -32,3 +32,5 @@
 .dub/
 *-test-*
 dub.selections.json
+!/.editorconfig
+!/.gitattributes
