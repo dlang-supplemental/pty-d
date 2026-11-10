@@ -3,7 +3,7 @@ description "Thin portable PTY bindings for D: Windows ConPTY + POSIX posix_open
 authors "amdphreak"
 copyright "Copyright (c) 2026, dlang-supplemental contributors"
 license "MIT"
-version "0.1.0"
+version "0.1.1"
 # Keep in sync with VERSION / git tag vX.Y.Z.
 
 targetType "library"

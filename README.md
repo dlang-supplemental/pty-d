@@ -1,0 +1,98 @@
+<a id="readme-top"></a>
+<div align="center">
+<a href="https://code.dlang.org/packages/pty-d"><img src="https://img.shields.io/dub/v/pty-d.svg?style=for-the-badge" alt="Dub version"></a>
+<a href="https://github.com/dlang-supplemental/pty-d/graphs/contributors"><img src="https://img.shields.io/github/contributors/dlang-supplemental/pty-d.svg?style=for-the-badge" alt="Contributors"></a>
+<a href="https://github.com/dlang-supplemental/pty-d/network/members"><img src="https://img.shields.io/github/forks/dlang-supplemental/pty-d.svg?style=for-the-badge" alt="Forks"></a>
+<a href="https://github.com/dlang-supplemental/pty-d/stargazers"><img src="https://img.shields.io/github/stars/dlang-supplemental/pty-d.svg?style=for-the-badge" alt="Stars"></a>
+<a href="https://github.com/dlang-supplemental/pty-d/issues"><img src="https://img.shields.io/github/issues/dlang-supplemental/pty-d.svg?style=for-the-badge" alt="Issues"></a>
+<a href="https://github.com/dlang-supplemental/pty-d/blob/main/LICENSE"><img src="https://img.shields.io/github/license/dlang-supplemental/pty-d.svg?style=for-the-badge" alt="License"></a>
+<br />
+<h3 align="center">pty-d</h3>
+<p align="center">
+Thin portable PTY bindings for D -- Windows ConPTY + POSIX <code>posix_openpt</code>.<br />
+FFI and a small safe host API only. No VT parser / emulator.
+<br />
+<a href="https://github.com/dlang-supplemental/pty-d/issues">Report Bug</a>
+&middot;
+<a href="https://github.com/dlang-supplemental/pty-d/issues">Request Feature</a>
+&middot;
+<a href="https://dlang-supplemental.github.io/docs/">Explore the docs >></a>
+</p>
+</div>
+
+
+## About
+
+`pty-d` wraps OS pseudo-terminal host APIs for D applications that need to
+**host** a shell or console child:
+
+* **Windows:** ConPTY (`CreatePseudoConsole`, `ResizePseudoConsole`,
+  `ClosePseudoConsole`) resolved at runtime from `kernel32.dll`, plus a RAII
+  `ConPty` / `Pty` type that owns the duplex pipes.
+* **POSIX:** `posix_openpt` / `grantpt` / `unlockpt` / `ptsname` and
+  `TIOCSWINSZ` resize via `PosixPty` / `Pty`.
+
+It does **not** reimplement ConPTY, parse VT sequences, or draw a terminal UI.
+Pair with [`vt-d`](https://github.com/dlang-supplemental/vt-d) (DUB `vt-d`) for VT/ANSI → character-cell screen model.
+For in-terminal TUI widgets see [`opentui-d`](https://github.com/dlang-supplemental/opentui-d).
+
+## Install
+
+```powershell
+dub add pty-d
+```
+
+```sdl
+dependency "pty-d" version="~>0.1.0"
+```
+
+## Quick start (Windows)
+
+```d
+import pty;
+
+void main()
+{
+    auto session = Pty.open(80, 24);
+    scope (exit) session.close();
+
+    // Attach session.handle() via PROC_THREAD_ATTRIBUTE_PSEUDOCONSOLE
+    // when calling CreateProcess. Then ReadFile(session.outputReadHandle())
+    // / WriteFile(session.inputWriteHandle()) for the VT byte stream.
+    session.resize(120, 40);
+}
+```
+
+## Quick start (POSIX)
+
+```d
+import pty;
+
+void main()
+{
+    auto session = Pty.open(80, 24);
+    scope (exit) session.close();
+
+    // After fork: open(session.slaveName) in the child, dup2 onto 0/1/2.
+    // Parent: read/write session.masterFd().
+    session.resize(120, 40);
+}
+```
+
+## Built With
+
+* **Runtime:** D (LDC / DMD), Windows 10 1809+ ConPTY, POSIX PTY
+* **Packaging:** DUB (`pty-d`)
+
+## Changelog
+
+See [CHANGELOG.adoc](CHANGELOG.adoc).
+
+## License
+
+MIT -- see [LICENSE](LICENSE).
+
+## Contact
+
+* Org: [dlang-supplemental](https://github.com/dlang-supplemental)
+* Issues: [pty-d issues](https://github.com/dlang-supplemental/pty-d/issues)
